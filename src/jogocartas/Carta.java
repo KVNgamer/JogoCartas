@@ -33,6 +33,9 @@ public class Carta {
     String getNumero(){
         return this.numero;
     }
+      String getNaipe() {
+       return this.naipe;
+    }
     
     
     @Override
@@ -47,4 +50,6 @@ public class Carta {
 
 		return " " ;
     }
+
+  
 }

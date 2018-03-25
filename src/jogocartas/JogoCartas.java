@@ -21,6 +21,7 @@ public class JogoCartas {
         
         System.out.println("numero de cartas"+pilha.baralho.size());
         System.out.println(pilha.mostraTopo());
+        pilha.mostraTudo();
         
         
 
@@ -36,31 +37,65 @@ public class JogoCartas {
     private static void criaBaralho(Pilha pilha) {
         boolean completo =true;
         int totalCartas=0;
-        String naipe="Copas";
+        String naipe="Copas♥";
         String numero="A";
         int valor=1;
         
         
         while(completo==true){
-            if(valor>10){
-            valor=11;
-            }
-            
-            
-            
             Carta CartaAdd = new Carta(naipe,numero,valor);
             pilha.add(CartaAdd);
-            
             valor++;
             totalCartas++;
-                if(totalCartas==54){
-                    completo=false;
-                }
-                
-                
-                
-                
+            naipe=trocaNaipe(naipe,totalCartas);
+            valor=trocaValor(CartaAdd,naipe,valor);
+            numero=trocaCarta(numero,valor);
+            if(totalCartas==52){
+                completo=false;
+            }                
         }
+    }
+
+    private static String trocaNaipe(String naipe,int totalCartas) {
+            
+            if(totalCartas==13){
+                return naipe="ouros♦";
+               
+            }
+            if(totalCartas==26){
+                return naipe="paus♣";
+                
+            }
+            if(totalCartas==39){
+                return naipe="espadas♠";
+              
+            }
+           return naipe;
+    }
+
+    private static String trocaCarta(String numero,int valor) {
+        
+        if(valor==1){
+          return numero="A";
+        }
+         if(valor==11){
+          return numero="J";
+         }
+          if(valor==12){
+          return numero="Q";
+          }
+          if(valor==13){
+          return numero="K";
+          }
+        
+        return   numero= valor+" ";
+    }
+
+    private static int trocaValor(Carta CartaAdd, String naipe, int valor) {
+        if(CartaAdd.getNaipe()!=naipe){
+                return valor=1;
+                    }
+        return valor;
     }
     
     
@@ -132,6 +167,11 @@ public class JogoCartas {
             
             
             return this.baralho.get(this.baralho.size()-1);
+        }
+        public void mostraTudo(){
+            for (Carta x : baralho) {
+                System.out.println(x);
+            }
         }
     
     }
