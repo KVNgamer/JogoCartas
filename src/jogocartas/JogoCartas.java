@@ -13,14 +13,12 @@ public class JogoCartas {
     
     public static void main(String[] args) {
         Pilha pilha = new Pilha();
-       
-
         criaBaralho(pilha);
-       
+        ajustaBaralho(pilha);
        
         
-        System.out.println("numero de cartas"+pilha.baralho.size());
-        System.out.println(pilha.mostraTopo());
+        //System.out.println("numero de cartas"+pilha.baralho.size());
+        //System.out.println(pilha.mostraTopo());
         pilha.mostraTudo();
         
         
@@ -40,8 +38,7 @@ public class JogoCartas {
         String naipe="Copas♥";
         String numero="A";
         int valor=1;
-        
-        
+       
         while(completo==true){
             Carta CartaAdd = new Carta(naipe,numero,valor);
             pilha.add(CartaAdd);
@@ -96,6 +93,14 @@ public class JogoCartas {
                 return valor=1;
                     }
         return valor;
+    }
+
+    private static void ajustaBaralho(Pilha pilha) {
+        for (Carta x : pilha.baralho) {
+                if(x.valor>10){
+                x.valor=11;
+                }
+            }
     }
     
     
@@ -169,6 +174,9 @@ public class JogoCartas {
             return this.baralho.get(this.baralho.size()-1);
         }
         public void mostraTudo(){
+            System.out.print(String.format("%-10s","|naipe"));
+            System.out.println(String.format("%-20s","|numero"));
+            
             for (Carta x : baralho) {
                 System.out.println(x);
             }

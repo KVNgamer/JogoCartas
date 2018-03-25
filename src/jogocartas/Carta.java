@@ -40,13 +40,9 @@ public class Carta {
     
     @Override
     public String toString(){
-       
-        System.out.print(String.format("%-10s","|naipe"));
-        System.out.print(String.format("%-20s","|numero"));
-        System.out.println(String.format("%-10s","|valor"));          
+                
         System.out.print(String.format("%-10s",this.naipe));
         System.out.print(String.format("%-20s",this.numero));
-        System.out.println(String.format("%-10s",this.valor));
 
 		return " " ;
     }
